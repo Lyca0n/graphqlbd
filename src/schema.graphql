@@ -1,0 +1,76 @@
+type Query {
+    users(query: String): [User!]!
+    faqs: [Faq!]
+    abouts: [About!]
+    ideas: [Idea!]
+    events: [Event!]
+    registrations: [Registration!]
+}
+
+type Mutation {
+    createIdea(data: CreateIdeaInput!): Idea!
+}
+
+input CreateIdeaInput {    
+    datetime: String!
+    likes: Int!
+    title: String!
+    description: String!
+    proposer: ID!
+    benefit: String!
+    outcome: String!
+    status: String!
+    files: String!
+}
+
+type Faq {   
+    id: ID!     
+    question: String!
+    answer: String!
+}
+
+type Idea{
+    id: ID!
+    datetime: String
+    likes: Int!
+    title: String!
+    description: String!
+    proposer: User!
+    benefit: String!
+    outcome: String!
+    status: String!
+    files: String!
+}
+
+type User{
+    id: ID!
+    name: String!
+    uname: String!
+}
+
+type Event{
+    id: ID!
+    datetime: String!
+    title: String!
+    place: String!   
+}
+
+type About{
+    id: ID!
+    title: String!
+    text: String!
+}
+
+type Registration{
+    id: ID! 
+    who: ID!
+    datetime: String!
+    shirtsize: String!
+    specialFoodRequest:  String!
+    department: ID!
+}
+
+type Department {
+    id: ID!
+    name: String!
+}
