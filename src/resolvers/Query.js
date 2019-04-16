@@ -15,7 +15,7 @@ const Query = {
         return ctx.db.registrations
     },
     ideas(parent, args, ctx, info) {        
-        return ctx.db.ideas
+        return ctx.models.Idea.findAll()
     }
 }
 

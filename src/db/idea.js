@@ -1,7 +1,7 @@
 export default (sequelize, DataTypes) => {
     return sequelize.define('idea',{
         id: { 
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             primaryKey: true,
         },
         datetime:{ type: DataTypes.STRING},

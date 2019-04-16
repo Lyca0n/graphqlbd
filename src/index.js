@@ -4,21 +4,19 @@ import Query from './resolvers/Query';
 import Mutation from './resolvers/Mutation';
 import Idea from './resolvers/Idea';
 
-
 // Create tables
 models.sequelize.sync({})
     .then(() => {
         console.info('INFO - Database sync complete.')
-
-        console.info('SETUP - Starting server...')
-
+        server.start(() => {
+            console.log('🚀 server up');
+        })
     })
     .catch(() => {
         console.error('ERROR - Unable to sync database.')
         console.error('ERROR - Server not started.')
     })
 
-models.Idea.create({ title: 'none' })
 const server = new GraphQLServer({
     typeDefs: `./src/schema.graphql`,
     resolvers: {
@@ -32,6 +30,3 @@ const server = new GraphQLServer({
     }
 });
 
-server.start(() => {
-    console.log('server up');
-})
